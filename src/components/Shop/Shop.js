@@ -15,13 +15,15 @@ const Shop = () => {
 		const newCart = [...cart, product];
 		setCart(newCart);
 	};
+
 	return (
 		<div className='shop-container'>
 			<div className='product-container'>
 				{products.map((product) => (
 					<Product
 						product={product}
-						handleAddProduct={handleAddProduct}></Product>
+						handleAddProduct={handleAddProduct}
+						key={product.key}></Product>
 				))}
 			</div>
 			<div className='cart-container'>
