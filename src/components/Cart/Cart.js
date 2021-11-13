@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // Arrow function of Cart.js
 const Cart = (props) => {
 	// Assign value of props
@@ -40,6 +41,7 @@ const Cart = (props) => {
 				<small>Tax + VAT: {formatNumber(tax)}</small>
 			</p>
 			<p>Total Price: {formatNumber(totalPrice + shipping + tax)}</p>
+			<Link to="/review"><button className="add-cart-btn">Review Order</button></Link>
 		</div>
 	);
 };
