@@ -8,11 +8,12 @@ const Cart = (props) => {
 	// let totalPrice = 0;
 	// for (let i = 0; i < cart.length; i++) {
 	// 	const product = cart[i];
-	// 	totalPrice = totalPrice + product.price;
+	// 	totalPrice = totalPrice + product.price * product.quantity;
 	// }
 
 	// Calculate Total Price of Products
-	const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+	const totalPrice = cart.reduce((total, product) => total + product.price * product.quantity, 0);
+	// debugger;
 	// Calculate Shipping Cost
 	let shipping = 0;
 	if (totalPrice > 49) {
