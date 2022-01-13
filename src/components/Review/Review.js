@@ -5,17 +5,16 @@ import {
 	removeFromDatabaseCart,
 } from '../../utilities/databaseManager';
 import fakeData from '../../fakeData';
-import ReviewItem from './ReviewItem/ReviewItem';
+import ReviewItem from '../ReviewItem/ReviewItem';
 import Cart from '../Cart/Cart';
 import happyImg from '../../images/giphy.gif';
+import { useNavigate } from 'react-router';
 const Review = () => {
 	const [cart, setCart] = useState([]);
 	const [orderPlaced, setOrderPlaced] = useState(false);
-	const handlePlaceOrder = () => {
-		// console.log('Order Placed');
-		setCart([]);
-		setOrderPlaced(true);
-		processOrder();
+	let navigate = useNavigate();
+	const handleProceedCheckout = () => {
+		navigate('/shipment');
 	};
 	const handleRemoveItem = (productKey) => {
 		// console.log('Remove Clicked', productKey);
@@ -53,8 +52,8 @@ const Review = () => {
 			</div>
 			<div className='cart-container'>
 				<Cart cart={cart}>
-					<button onClick={handlePlaceOrder} className='add-cart-btn'>
-						Place Order
+					<button onClick={handleProceedCheckout} className='add-cart-btn'>
+						Proceed Checkout
 					</button>
 				</Cart>
 			</div>

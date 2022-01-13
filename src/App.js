@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Review from './components/Review/Review';
@@ -7,10 +7,17 @@ import Shop from './components/Shop/Shop';
 import NoMatch from './components/NoMatch/NoMatch';
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './components/Login/Login';
+import Shipment from './components/Shipment/Shipment';
+// Context API
+export const UserContext = createContext();
 
 function App() {
+	const [logInUser, setLogInUser] = useState({});
 	return (
-		<div>
+		// Context API
+		<UserContext.Provider value={[logInUser, setLogInUser]}>
+			<p>Email: {logInUser.email}</p>
 			<Header></Header>
 			{/* <Shop></Shop> */}
 
@@ -21,6 +28,8 @@ function App() {
 						<Route path='review' element={<Review />} />
 						<Route path='inventory' element={<Inventory />} />
 						<Route path='/' element={<Shop />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/shipment' element={<Shipment />} />
 						<Route
 							// :productKey - URL Parameter (Dynamic URL Parameter)
 							path='/product/:productKey'
@@ -30,7 +39,7 @@ function App() {
 					</Routes>
 				</BrowserRouter>
 			</main>
-		</div>
+		</UserContext.Provider>
 	);
 }
 
